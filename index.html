@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahat Ullah - Data Analyst</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a1a;
+            --bg-secondary: #1a1a2e;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --glass-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            --text-primary: #ffffff;
+            --text-secondary: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent: #00d4ff;
+            --accent-secondary: #7c3aed;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-accent: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%);
+            --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Enhanced animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(0, 212, 255, 0.15) 0%, transparent 60%),
+                radial-gradient(circle at 80% 70%, rgba(124, 58, 237, 0.15) 0%, transparent 60%),
+                radial-gradient(circle at 50% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%);
+            z-index: -2;
+            animation: morphBackground 15s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2300d4ff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
+            z-index: -1;
+            animation: floatPattern 25s linear infinite;
+        }
+
+        @keyframes morphBackground {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg);
+                filter: hue-rotate(0deg);
+            }
+            33% { 
+                transform: scale(1.1) rotate(2deg);
+                filter: hue-rotate(90deg);
+            }
+            66% { 
+                transform: scale(1.05) rotate(-1deg);
+                filter: hue-rotate(180deg);
+            }
+        }
+
+        @keyframes floatPattern {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(60px, 60px) rotate(360deg); }
+        }
+
+        /* Ultra-modern navigation */
+        nav {
+            position: fixed;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 60px;
+            padding: 10px 15px;
+            z-index: 1000;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+            animation: slideDownGlow 1s ease;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-list a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-list a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-accent);
+            transition: left 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: -1;
+            border-radius: 30px;
+        }
+
+        .nav-list a:hover::before,
+        .nav-list a.active::before {
+            left: 0;
+        }
+
+        .nav-list a:hover,
+        .nav-list a.active {
+            color: white;
+            font-weight: 600;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Hero section with enhanced effects */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUpBounce 1.2s ease;
+        }
+
+        .hero h1 {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.03em;
+            position: relative;
+        }
+
+        .hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+            opacity: 0.7;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            color: var(--accent);
+            margin-bottom: 25px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero .description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 50px;
+            line-height: 1.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-primary);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: var(--accent);
+            box-shadow: 0 25px 70px rgba(0, 212, 255, 0.4);
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid rgba(0, 212, 255, 0.5);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gradient-accent);
+            color: white;
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 25px 70px rgba(124, 58, 237, 0.3);
+        }
+
+        /* Enhanced sections */
+        section {
+            padding: 100px 20px;
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 80px;
+            color: var(--text-primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+        }
+
+        .section-title i {
+            color: var(--accent);
+            margin-right: 15px;
+        }
+
+        /* Ultra-glassy cards */
+        .glass-card {
+            background: var(--gradient-card);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 24px;
+            box-shadow: 
+                0 25px 80px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: rgba(0, 212, 255, 0.4);
+            box-shadow: 
+                0 35px 100px rgba(0, 0, 0, 0.5),
+                0 0 50px rgba(0, 212, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .glass-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Enhanced about section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .profile-card {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: var(--gradient-accent);
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            box-shadow: 
+                0 20px 60px rgba(0, 212, 255, 0.4),
+                0 0 0 4px rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-img::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .profile-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .profile-card p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 20px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .about-text {
+            padding: 40px;
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .about-text p {
+            margin-bottom: 25px;
+        }
+
+        /* Enhanced experience */
+        .experience-list {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .experience-item {
+            padding: 35px;
+            position: relative;
+            border-left: none;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+        }
+
+        .experience-item h3 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .experience-item .company {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        .experience-item .description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* Enhanced skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            padding: 35px;
+        }
+
+        .skill-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .skill-card i {
+            color: var(--accent);
+            font-size: 1.4rem;
+            padding: 8px;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: rgba(0, 212, 255, 0.15);
+            color: var(--accent);
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .skill-tag:hover {
+            background: var(--gradient-accent);
+            color: white;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Enhanced projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            overflow: hidden;
+        }
+
+        .project-header {
+            background: var(--gradient-primary);
+            padding: 25px;
+            color: white;
+            position: relative;
+        }
+
+        .project-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-header::before {
+            opacity: 0.9;
+        }
+
+        .project-header h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-header p {
+            font-size: 14px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-tag, .tech-badge {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--accent);
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        /* Enhanced achievements */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .achievement-card {
+            padding: 35px;
+            text-align: center;
+        }
+
+        .achievement-icon {
+            font-size: 3.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            background: rgba(0, 212, 255, 0.1);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .achievement-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .achievement-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* Enhanced certifications */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .cert-card {
+            padding: 30px;
+            text-align: center;
+            background: var(--gradient-card);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .cert-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+        }
+
+        .cert-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+            background: rgba(0, 212, 255, 0.1);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+        }
+
+        .cert-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .issuer {
+            color: var(--accent);
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .desc {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Enhanced contact */
+        .contact-content {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-description {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 50px;
+            line-height: 1.7;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .contact-item {
+            padding: 30px 25px;
+            text-align: center;
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+            display: block;
+            background: rgba(0, 212, 255, 0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+        }
+
+        .contact-item h4 {
+            margin-bottom: 10px;
+            color: var(--text-primary);
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .contact-item p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Enhanced animations */
+        @keyframes slideDownGlow {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        @keyframes fadeInUpBounce {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            60% {
+                opacity: 1;
+                transform: translateY(-10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-accent);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            nav {
+                left: 15px;
+                right: 15px;
+                transform: none;
+                width: calc(100% - 30px);
+                padding: 8px 12px;
+            }
+
+            .nav-list {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 3px;
+            }
+
+            .nav-list a {
+                padding: 10px 16px;
+                font-size: 13px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .skills-grid,
+            .projects-grid,
+            .achievements-grid,
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 80px 15px;
+            }
+
+            .section-title {
+                margin-bottom: 60px;
+            }
+
+            .hero h1 {
+                font-size: clamp(2.5rem, 8vw, 3.5rem);
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ================================================
+           3D DEPTH, LIGHTING & MODERN UX ENHANCEMENTS
+        ================================================ */
+
+        /* keep content clear of the floating fixed nav on jump-links */
+        section {
+            scroll-margin-top: 120px;
+        }
+
+        /* soft ambient light that follows the cursor around the page */
+        .cursor-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 480px;
+            height: 480px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.16) 0%, rgba(124, 58, 237, 0.10) 45%, transparent 70%);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 2;
+            filter: blur(20px);
+            mix-blend-mode: screen;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            will-change: transform;
+        }
+
+        .cursor-glow.active {
+            opacity: 1;
+        }
+
+        /* every card becomes a real 3D object that tilts toward the cursor */
+        .glass-card {
+            transform-style: preserve-3d;
+            will-change: transform;
+            transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                        box-shadow 0.4s ease,
+                        border-color 0.4s ease;
+        }
+
+        /* a light source that travels with the cursor inside each card */
+        .glass-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle 260px at var(--mx, 50%) var(--my, 50%), rgba(0, 212, 255, 0.25), transparent 65%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            mix-blend-mode: soft-light;
+            pointer-events: none;
+            border-radius: inherit;
+        }
+
+        .glass-card:hover::after {
+            opacity: 1;
+        }
+
+        /* tactile 3D buttons with a light sweep */
+        .btn {
+            transform-style: preserve-3d;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -75%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transform: skewX(-20deg);
+            transition: left 0.7s ease;
+            pointer-events: none;
+        }
+
+        .btn:hover::after {
+            left: 130%;
+        }
+
+        .btn:active {
+            transform: translateY(-2px) scale(0.97);
+        }
+
+        /* hero title reacts to the cursor like it's floating in space */
+        .hero-content {
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease-out;
+        }
+
+        /* floating 3D avatar disc */
+        .profile-img {
+            animation: floatDisc 6s ease-in-out infinite;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .profile-card:hover .profile-img {
+            transform: rotateY(15deg) rotateX(8deg) scale(1.06);
+            animation-play-state: paused;
+        }
+
+        @keyframes floatDisc {
+            0%, 100% { transform: translateY(0) rotateZ(0deg); }
+            50% { transform: translateY(-10px) rotateZ(3deg); }
+        }
+
+        /* section headers get a lifted 3D icon badge instead of a flat glyph */
+        .section-title i {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            background: var(--gradient-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+            vertical-align: middle;
+            margin-right: 18px;
+            font-size: 1.3rem;
+            transform: perspective(600px) rotateX(8deg);
+        }
+
+        /* real depth on every circular icon */
+        .achievement-icon,
+        .cert-icon,
+        .contact-item i,
+        .skill-card i {
+            box-shadow: 0 15px 30px rgba(0, 212, 255, 0.18),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.25),
+                        inset 0 -6px 14px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover .achievement-icon,
+        .glass-card:hover .cert-icon,
+        .contact-item:hover i {
+            transform: translateZ(10px) scale(1.08) rotateY(10deg);
+        }
+
+        /* skill chips lift with a touch of 3D */
+        .skill-tag {
+            transform-style: preserve-3d;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-3px) scale(1.06) rotateX(8deg);
+        }
+
+        /* scroll reveals now flip into place instead of just fading */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: perspective(1000px) translateY(40px) rotateX(-8deg);
+            transition: opacity 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                        transform 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: perspective(1000px) translateY(0) rotateX(0deg);
+        }
+
+        /* contact links look and behave like real interactive controls */
+        .contact-item a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        /* clear, accessible keyboard focus everywhere */
+        a:focus-visible,
+        button:focus-visible,
+        .btn:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 4px;
+            border-radius: 8px;
+        }
+
+        /* respect people who don't want motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.001ms !important;
+            }
+        }
+
+        /* keep touch devices calm - no tilt/glow tracking without a real cursor */
+        @media (hover: none) {
+            .cursor-glow { display: none; }
+            .glass-card:hover { transform: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="nav-list">
+            <li><a href="#home" class="nav-link active">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#experience" class="nav-link">Experience</a></li>
+              <li><a href="#Education" class="nav-link">Education</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#achievements" class="nav-link">Awards</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#certifications" class="nav-link">Certificates</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Rahat Ullah</h1>
+            <p class="subtitle">Full Stack Data Professional</p>
+            <p class="description">Transforming raw data into actionable insights through cutting-edge analytics and scalable pipeline architectures.</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">
+                    <i class="fas fa-code"></i>
+                    View Projects
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i>
+                    Contact Me
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title animate-on-scroll"><i class="fas fa-user"></i>About Me</h2>
+        <div class="about-grid animate-on-scroll">
+            <div class="glass-card profile-card">
+                <div class="profile-img">Rahat</div>
+                <h3>Senior Data Analyst</h3>
+                <p>Pakistan Air Force HQ</p>
+                <div class="stats-grid">
+                    <div class="stat">
+                        <span class="stat-number" id="years-exp-stat">5+</span>
+                        <span class="stat-label">Years</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Skills</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Companies</span>
+                    </div>
+                </div>
+            </div>
+            <div class="glass-card about-text">
+            <p>  As a Senior Data Analyst with over <span id="years-exp-text">5+</span> years of experience, I specialize in building robust data pipelines and delivering advanced analytics solutions. My expertise covers the complete data lifecycle—spanning data collection, transformation, visualization, and deployment.</p>
+
+<p>Currently, I am serving at Pakistan Air Force HQ, where I have successfully delivered 50+ critical decision-making dashboards. These solutions have empowered leadership with data-driven insights and significantly enhanced strategic decision-making across multiple business functions.</p>
+
+<p>I hold a Master of Science (MS) and a Bachelor of Science (BS) in Computer Science from Bahria University, Islamabad, Pakistan.</p>
+
+<p>My technical proficiency includes modern tools and technologies for data transformation and analytics, such as Python, SQL, PySpark, Power Query, and DAX.</p>
+
+<p>Driven by a passion for turning complex data into actionable insights, my goal is to help organizations unlock the full potential of their data and achieve measurable business outcomes.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title animate-on-scroll"><i class="fas fa-briefcase"></i>Experience</h2>
+        <div class="experience-list animate-on-scroll">
+            <div class="glass-card experience-item">
+                <h3>Senior Data Analyst</h3>
+                <span class="company">Pakistan Air Force HQ</span>
+                
+                <p class="description">
+                    Leading data analysis initiatives to support strategic decision-making. Developing and maintaining ETL pipelines, creating interactive dashboards.
+                </p>
+            </div>
+            <div class="glass-card experience-item">
+                <h3>Data Analyst</h3>
+                <span class="company">Astrotech (PAF)</span>
+              
+                <p class="description">
+                   Built scalable data pipelines, ensured data quality, and enabled analytics for strategic business insights.</p>
+            </div>
+            <div class="glass-card experience-item">
+                <h3>Software Developer</h3>
+                <span class="company">Pakistan Television Corporation (PTV), Islamabad</span>
+              
+                <p class="description">
+                 I worked in the Software Development Section, contributing to the design and implementation of applications.</p>
+            </div>
+        </div>
+    </section>
+    
+
+ <section id="Education">
+        <h2 class="section-title animate-on-scroll"><i class="fas fa-graduation-cap"></i>Education</h2>
+        <div class="achievements-grid animate-on-scroll">
+            <div class="glass-card achievement-card">
+                <div class="achievement-icon">
+                    <i class="fas fa-user-graduate edu-icon"></i>
+                </div>
+                <h3>Master's in Computer Science</h3>
+                <p>Bahria University, Islamabad </p>
+                <p>CGPA: 3.05 / 4</p>
+            </div>
+            <div class="glass-card achievement-card">
+                <div class="achievement-icon">
+                    <i class="fas fa-certificate edu-icon"></i>
+                </div>
+                <h3>Bachelor's in Computer Science</h3>
+                <p>Bahria University, Islamabad</p>
+                <p>CGPA: 2.84 / 4</p>
+            </div>
+          
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title animate-on-scroll"><i class="fas fa-code"></i>Skills & Technologies</h2>
+        <div class="skills-grid animate-on-scroll">
+            <div class="glass-card skill-card">
+                <h3><i class="fas fa-database"></i> Data Engineering</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">PySpark</span>
+                    <span class="skill-tag">Pandas</span> 
+                    <span class="skill-tag">Polars</span>
+                       <span class="skill-tag">Ray Data</span>
+
+                      <span class="skill-tag">Duckdb</span>
+                    
+                  
+                    
+                    
+                    <span class="skill-tag">ETL Pipelines</span>
+        
+                </div>
+            </div>
+            <div class="glass-card skill-card">
+                <h3><i class="fas fa-chart-line"></i>Business Intelligence</h3>
+                <div class="skill-tags">
+                    
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">Tableau</span>
+                   
+                   
+                </div>
+            </div>
+            <div class="glass-card skill-card">
+                <h3><i class="fas fa-cloud"></i>Data Warehouse</h3>
+                <div class="skill-tags">
+                     <span class="skill-tag">Snowflake
+                        </span>
+                      <span class="skill-tag">
+                    Databricks
+                      </span>
+                    <span class="skill-tag">Teradata</span>
+                    <span class="skill-tag">Hadoop</span>
+                     <span class="skill-tag">Hive</span>
+               
+                </div>
+            </div>
+            <div class="glass-card skill-card">
+            <h3><i class="fas fa-sync-alt"></i>Automation</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">FastLoad</span>
+                    <span class="skill-tag">Bteq</span>
+                    <span class="skill-tag">Cron Job</span>
+                   
+                </div>
+            </div>
+                  <div class="glass-card skill-card">
+             <h3 class="devops-title"><i class="fab fa-docker"></i>DevOps</h3>
+
+                <div class="skill-tags">
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">GitLab</span>
+                    <span class="skill-tag">CICD</span>
+                  
+                   
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section id="achievements">
+        <h2 class="section-title animate-on-scroll"><i class="fas fa-trophy"></i>Awards & Achievements</h2>
+        <div class="achievements-grid animate-on-scroll">
+            <div class="glass-card achievement-card">
+                <div class="achievement-icon">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <h3>Data Excellence Award (PAF)</h3>
+                <p>Pakistan Air Force Awarded for exceptional service in data analytics, leveraging advanced analysis techniques to enhance operational decision-making and resource allocation efficiency.</p>
+            </div>
+            <div class="glass-card achievement-card">
+                <div class="achievement-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>3rd Position - Final Year Project</h3>
+                <p>Achieved 3rd position in Final Year Project competition at Bahria University's Open House for Android secure data transmission application.</p>
+            </div>
+          
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title animate-on-scroll"><i class="fas fa-project-diagram"></i>Featured Projects</h2>
+        <div class="projects-grid animate-on-scroll">
+            <div class="glass-card project-card">
+                <div class="project-header">
+                    <h3>Power BI Dashboards</h3>
+               
+                </div>
+                <div class="project-content">
+                   
+                <p>Developed and deployed multiple interactive dashboards tailored for organizational needs.</p>
+
+<ul class="project-list">
+    <li>
+      <i class="fas fa-chart-line"></i>
+      <strong>GitLab Task Monitoring Dashboard</strong>  built on top of the existing GitLab system to track development progress, productivity, and workflow efficiency.
+    </li>
+    <li>
+      <i class="fas fa-user-clock"></i>
+      <strong>Attendance Monitoring Dashboard</strong>  enhanced employee time tracking and reporting using the existing attendance system.
+    </li>
+    <li>
+      <i class="fas fa-star"></i>
+      <strong>360° Annual Evaluation Dashboard</strong>  supported performance management and streamlined feedback within the organization’s existing evaluation process.
+    </li>
+    <li>
+      <i class="fas fa-lock"></i>
+      <strong>Access Control Dashboard</strong>  monitored and managed secure employee entry using existing ACS data.
+    </li>
+    <li>
+      <i class="fas fa-drone"></i>
+      <strong>Drone Activity Tracking Dashboard</strong>  visualized flight hours, calculated averages, and compared setup-wise performance for operational planning.
+    </li>
+    <li>
+      <i class="fas fa-project-diagram"></i>
+      <strong>Project Management Dashboards</strong>  streamlined project tracking, optimized resource allocation, and improved decision-making.
+    </li>
+  </ul>
+
+                    <div class="tech-tags">
+                        <span class="tech-tag">Power Query</span>
+                        <span class="tech-tag">Dax</span>
+                        <span class="tech-tag">Data Modelling</span>
+                        <span class="tech-tag">Visualization</span>
+                    </div>
+                </div>
+            </div>
+            <div class="glass-card project-card">
+                <div class="project-header">
+                    <h3>CI/CD Pipelines & Monitoring</h3>
+                
+                </div>
+                <div class="project-content">
+                    
+
+                  <ul class="project-list">
+<ul>
+  <li><i class="fas fa-shield-alt"></i> Deployed a secure offline CI/CD pipeline for Pakistan Air Force.</li>
+  <li><i class="fas fa-stream"></i> Automated CI/CD pipelines across multiple application stacks.</li>
+  <li><i class="fas fa-code-branch"></i> Integrated Web API, React, Flask, and Node.js applications.</li>
+  <li><i class="fab fa-docker"></i> Used Docker for consistent and portable environments.</li>
+  <li><i class="fas fa-rocket"></i> Improved deployment efficiency, scalability, and reliability.</li>
+  <li><i class="fas fa-tasks"></i> Implemented a comprehensive monitoring setup to ensure system reliability.</li>
+  <li><i class="fas fa-server"></i> Deployed Node Exporter for system-level metrics collection.</li>
+  <li><i class="fas fa-database"></i> Integrated Prometheus for efficient metrics collection and storage.</li>
+  <li><i class="fas fa-chart-line"></i> Configured Grafana dashboards for real-time visualization and alerting.</li>
+  <li><i class="fas fa-bell"></i> Enabled proactive monitoring of system resources and performance trends.</li>
+</ul>
+
+                    <div class="tech-tags">
+                        <span class="tech-tag">Git</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Docker Compose</span>
+                          <span class="tech-tag">Node Exporter</span>
+                        <span class="tech-tag">Prometheus </span>
+                        <span class="tech-tag">Grafana</span>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="glass-card project-card">
+                <div class="project-header">
+                    <h3>Data Warehousing & ETL Development</h3>
+                   
+                </div>
+                <div class="project-content">
+<ul>
+  <li><i class="fas fa-database"></i> Worked extensively on <strong>Teradata</strong> and <strong>Databricks</strong> for large-scale data integration and analytics.</li>
+  <li><i class="fas fa-bolt"></i> Utilized <strong>FastLoad</strong> and optimized <strong>ETL pipelines</strong> (PySpark, SQL) for efficient data loading and transformation.</li>
+  <li><i class="fas fa-random"></i> Designed and implemented <strong>data transformation workflows</strong> to ensure quality and align with business requirements.</li>
+  <li><i class="fas fa-layer-group"></i> Integrated data into <strong>centralized storage</strong> (Teradata Warehouse & Delta Lake) for unified processing.</li>
+  <li><i class="fas fa-chart-pie"></i> Developed <strong>reporting layers</strong> and connected with <strong>Power BI</strong> to deliver interactive dashboards and business insights.</li>
+</ul>           <div class="tech-tags">
+                        <span class="tech-tag">Teradata</span>
+                        <span class="tech-tag">Fastload </span>
+                        <span class="tech-tag">Bteq</span>
+                         <span class="tech-tag">Sql</span>
+                         <span class="tech-tag">Cronjob</span>
+                         <span class="tech-tag">PySpark</span>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <h2 class="section-title animate-on-scroll"><i class="fas fa-certificate"></i>Certifications</h2>
+        <div class="certifications-grid animate-on-scroll">
+            <div class="glass-card cert-card">
+                <div class="cert-icon">
+                    <i class="fas fa-cloud"></i>
+                </div>
+                <h3>Data Warehouse</h3>
+                <p class="issuer"> Dice Analytics</p>
+                <p class="desc">Delivered a complete Data Warehouse solution on Teradata, including data extraction and multi-layer architecture deployment, with seamless Tableau integration for business reporting and decision-making.</p>
+            </div>
+            <div class="glass-card cert-card">
+                <div class="cert-icon">
+                    <i class="fab fa-docker"></i>
+                </div>
+                <h3>DevOps</h3>
+                <p class="issuer"> Dice Analytics</p>
+                <p class="desc">Gained practical experience in DevOps by building Dockerfiles, orchestrating containers with Docker Compose, and applying Kubernetes concepts through hands-on training.</p>
+            </div>
+            <div class="glass-card cert-card">
+                <div class="cert-icon">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <h3>Big Data </h3>
+                <p class="issuer"> Dice Analytics</p>
+                <p class="desc">Completed Big Data training with hands-on practice in designing and implementing ETL pipelines. Gained experience in data transformation using Spark, Hive, and Pig, and integrated these tools to build a complete end-to-end data processing pipeline.</p>
+            </div>
+
+            <div class="glass-card cert-card">
+                <div class="cert-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <h3>SQL Database Fundamentals </h3>
+                <p class="issuer"> Microsoft</p>
+                <p class="desc">Completed Microsoft SQL training with hands-on experience across key Data Engineering concepts, including data modeling, querying, and optimization.</p>
+            </div>
+
+
+               <div class="glass-card cert-card">
+                <div class="cert-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <h3>Moving Data into Hadoop </h3>
+                <p class="issuer"> Cognitive Class.ai</p>
+                <p class="desc">Gained practical experience in Hadoop by transferring data from local file systems to HDFS and thoroughly studying and practicing essential Hadoop commands.</p>
+            </div>
+             
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title animate-on-scroll"><i class="fas fa-envelope"></i>Contact Me</h2>
+        <div class="contact-content animate-on-scroll">
+            <p class="contact-description">Let's connect and discuss how we can work together on your next data project.</p>
+            <div class="contact-grid">
+                <div class="glass-card contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h4>Email</h4>
+                    <p><a href="mailto:rahatullah.bahria@gmail.com">rahatullah.bahria@gmail.com</a></p>
+                </div>
+                <div class="glass-card contact-item">
+                    <i class="fas fa-phone"></i>
+                    <h4>Phone</h4>
+                    <p><a href="tel:+923099672017">+92 0309-9672017</a></p>
+                </div>
+                <div class="glass-card contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h4>Location</h4>
+                    <p>Rawalpindi, Pakistan</p>
+                </div>
+               
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Dynamically calculate years of experience from June 2019 to today
+        (function calculateExperience() {
+            const startDate = new Date(2019, 5, 1); // June 2019 (month is 0-indexed)
+            const now = new Date();
+
+            let years = now.getFullYear() - startDate.getFullYear();
+            const monthDiff = now.getMonth() - startDate.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && now.getDate() < startDate.getDate())) {
+                years--;
+            }
+
+            const yearsText = years + '+';
+
+            const statEl = document.getElementById('years-exp-stat');
+            const textEl = document.getElementById('years-exp-text');
+            if (statEl) statEl.textContent = yearsText;
+            if (textEl) textEl.textContent = yearsText;
+        })();
+
+        // Simplified and more reliable navigation system
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section[id]');
+            
+            // Handle navigation clicks
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Get target section
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        // Smooth scroll to target
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Update active navigation on scroll
+            function updateActiveNavigation() {
+                const scrollPos = window.scrollY + 100; // Offset for fixed nav
+                
+                sections.forEach(section => {
+                    const top = section.offsetTop;
+                    const bottom = top + section.offsetHeight;
+                    const id = section.getAttribute('id');
+                    
+                    if (scrollPos >= top && scrollPos < bottom) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }
+
+            // Throttle scroll event
+            let scrollTimeout;
+            window.addEventListener('scroll', function() {
+                if (!scrollTimeout) {
+                    scrollTimeout = setTimeout(() => {
+                        updateActiveNavigation();
+                        scrollTimeout = null;
+                    }, 10);
+                }
+            });
+
+            // Animate elements on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Initialize active navigation
+            updateActiveNavigation();
+        });
+
+        // Handle CTA button clicks
+        document.querySelectorAll('.cta-buttons a').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Update active navigation
+                    document.querySelectorAll('.nav-link').forEach(nav => {
+                        nav.classList.remove('active');
+                        if (nav.getAttribute('href') === targetId) {
+                            nav.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+    <script>
+        // Ambient cursor light - gives the whole page a sense of a real light source
+        (function initCursorGlow() {
+            if (window.matchMedia('(hover: none)').matches) return;
+
+            const glow = document.createElement('div');
+            glow.className = 'cursor-glow';
+            document.body.appendChild(glow);
+
+            let mouseX = window.innerWidth / 2;
+            let mouseY = window.innerHeight / 2;
+            let ticking = false;
+
+            window.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                glow.classList.add('active');
+
+                if (!ticking) {
+                    requestAnimationFrame(() => {
+                        glow.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+
+            document.addEventListener('mouseleave', () => glow.classList.remove('active'));
+        })();
+
+        // 3D tilt + travelling spotlight on every glass card
+        (function initCardTilt() {
+            if (window.matchMedia('(hover: none)').matches) return;
+
+            document.querySelectorAll('.glass-card').forEach((card) => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const cx = rect.width / 2;
+                    const cy = rect.height / 2;
+                    const rotateX = ((y - cy) / cy) * -6;
+                    const rotateY = ((x - cx) / cx) * 6;
+
+                    card.style.transform =
+                        `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px) scale(1.015)`;
+                    card.style.setProperty('--mx', `${x}px`);
+                    card.style.setProperty('--my', `${y}px`);
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = '';
+                });
+            });
+        })();
+
+        // Subtle hero parallax so the intro feels like it has real depth
+        (function initHeroParallax() {
+            if (window.matchMedia('(hover: none)').matches) return;
+
+            const heroContent = document.querySelector('.hero-content');
+            if (!heroContent) return;
+
+            document.querySelector('.hero').addEventListener('mousemove', (e) => {
+                const relX = (e.clientX / window.innerWidth - 0.5) * 2;
+                const relY = (e.clientY / window.innerHeight - 0.5) * 2;
+                heroContent.style.transform =
+                    `perspective(1200px) rotateY(${relX * 3}deg) rotateX(${-relY * 3}deg)`;
+            });
+
+            document.querySelector('.hero').addEventListener('mouseleave', () => {
+                heroContent.style.transform = 'perspective(1200px) rotateY(0deg) rotateX(0deg)';
+            });
+        })();
+    </script>
+</body>
+</html>
