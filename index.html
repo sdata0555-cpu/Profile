@@ -441,50 +441,173 @@
             margin-bottom: 25px;
         }
 
-        /* Enhanced experience */
+        /* LinkedIn-style experience timeline */
         .experience-list {
-            max-width: 900px;
+            max-width: 980px;
             margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .experience-item {
-            padding: 35px;
             position: relative;
-            border-left: none;
+            padding: 0 10px 10px 70px;
         }
 
-        .experience-item::before {
+        .experience-list::before {
             content: '';
             position: absolute;
-            left: 0;
+            left: 28px;
+            top: 8px;
+            bottom: 12px;
+            width: 3px;
+            background: rgba(148, 163, 184, 0.25);
+            border-radius: 3px;
+        }
+
+        .experience-company {
+            position: relative;
+            margin-bottom: 42px;
+        }
+
+        .experience-company:last-child {
+            margin-bottom: 0;
+        }
+
+        .company-header {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 22px;
+            position: relative;
+        }
+
+        .company-logo {
+            position: absolute;
+            left: -70px;
             top: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--gradient-accent);
-            border-radius: 2px;
-        }
-
-        .experience-item h3 {
-            font-size: 1.3rem;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .experience-item .company {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
             color: var(--accent);
-            font-weight: 600;
-            font-size: 15px;
-            margin-bottom: 15px;
+            font-size: 1.35rem;
+            z-index: 2;
         }
 
-        .experience-item .description {
+        .company-header h3 {
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin: 0 0 2px;
+        }
+
+        .company-meta {
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .company-meta .location {
+            color: var(--text-muted);
+        }
+
+        .experience-role {
+            position: relative;
+            padding: 0 0 28px 28px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .experience-role:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .experience-role::before {
+            content: '';
+            position: absolute;
+            left: -48px;
+            top: 7px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid var(--bg-primary);
+            box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25);
+            z-index: 3;
+        }
+
+        .experience-role h4 {
+            color: var(--text-primary);
+            font-size: 1.18rem;
+            font-weight: 600;
+            margin: 0 0 4px;
+        }
+
+        .role-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-bottom: 13px;
+        }
+
+        .role-meta .separator {
+            color: rgba(148, 163, 184, 0.45);
+        }
+
+        .experience-role .description {
             color: var(--text-secondary);
             line-height: 1.7;
-            font-size: 15px;
+            font-size: 14px;
+            margin: 0 0 13px;
+            max-width: 850px;
+        }
+
+        .experience-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .experience-skill {
+            color: var(--accent);
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.18);
+            padding: 5px 10px;
+            border-radius: 14px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .experience-list {
+                padding-left: 55px;
+            }
+
+            .experience-list::before {
+                left: 22px;
+            }
+
+            .company-logo {
+                left: -55px;
+                width: 44px;
+                height: 44px;
+                font-size: 1.1rem;
+            }
+
+            .experience-role {
+                padding-left: 18px;
+            }
+
+            .experience-role::before {
+                left: -40px;
+            }
+
+            .company-header {
+                margin-bottom: 18px;
+            }
         }
 
         /* Enhanced skills */
@@ -1146,28 +1269,119 @@
     <section id="experience">
         <h2 class="section-title animate-on-scroll"><i class="fas fa-briefcase"></i>Experience</h2>
         <div class="experience-list animate-on-scroll">
-            <div class="glass-card experience-item">
-                <h3>Senior Data Engineer</h3>
-                <span class="company">Pakistan Air Force HQ</span>
-                
-                <p class="description">
-                    Leading data analysis initiatives to support strategic decision-making. Developing and maintaining ETL pipelines, creating interactive dashboards.
-                </p>
+
+            <div class="experience-company">
+                <div class="company-header">
+                    <div class="company-logo" aria-label="Pakistan Air Force">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div>
+                        <h3>Pakistan Air Force</h3>
+                        <div class="company-meta">
+                            Full-time · 5 yrs 8 mos
+                            <span class="location"> · Islamabad · On-site</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-role">
+                    <h4>Senior Data Engineer</h4>
+                    <div class="role-meta">
+                        <span>Sep 2023 - Present</span>
+                        <span class="separator">·</span>
+                        <span>3 yrs</span>
+                    </div>
+                    <p class="description">
+                        Build scalable ETL pipelines using SQL, Python, Polars, PySpark, Snowflake, and Databricks.
+                        Develop data warehouse solutions and optimize data processing for analytics.
+                    </p>
+                    <div class="experience-skills">
+                        <span class="experience-skill">Apache Spark</span>
+                        <span class="experience-skill">Polars</span>
+                        <span class="experience-skill">SQL</span>
+                        <span class="experience-skill">Python</span>
+                        <span class="experience-skill">PySpark</span>
+                        <span class="experience-skill">Snowflake</span>
+                        <span class="experience-skill">Databricks</span>
+                    </div>
+                </div>
+
+                <div class="experience-role">
+                    <h4>Data Analyst</h4>
+                    <div class="role-meta">
+                        <span>Feb 2022 - Aug 2023</span>
+                        <span class="separator">·</span>
+                        <span>1 yr 7 mos</span>
+                    </div>
+                    <p class="description">
+                        Analyzed business data to deliver actionable insights for reporting and decision-making.
+                        Developed Power BI dashboards for KPI monitoring and performance analysis.
+                        Transformed and validated datasets to support reliable reporting.
+                    </p>
+                    <div class="experience-skills">
+                        <span class="experience-skill">Data Analytics</span>
+                        <span class="experience-skill">Business Intelligence (BI)</span>
+                        <span class="experience-skill">Power BI</span>
+                        <span class="experience-skill">KPI Reporting</span>
+                    </div>
+                </div>
+
+                <div class="experience-role">
+                    <h4>Big Data Developer</h4>
+                    <div class="role-meta">
+                        <span>Jan 2021 - Jan 2022</span>
+                        <span class="separator">·</span>
+                        <span>1 yr 1 mo</span>
+                    </div>
+                    <p class="description">
+                        Developed big data solutions for large-scale data processing. Worked with Apache Spark,
+                        Hadoop, and Hive for distributed processing. Built and optimized data workflows for
+                        analytics and reporting.
+                    </p>
+                    <div class="experience-skills">
+                        <span class="experience-skill">Hadoop Cluster</span>
+                        <span class="experience-skill">Hive</span>
+                        <span class="experience-skill">Apache Spark</span>
+                        <span class="experience-skill">Big Data</span>
+                    </div>
+                </div>
             </div>
-            <div class="glass-card experience-item">
-                <h3>Data Analyst</h3>
-                <span class="company">Astrotech (PAF)</span>
-              
-                <p class="description">
-                   Built scalable data pipelines, ensured data quality, and enabled analytics for strategic business insights.</p>
+
+            <div class="experience-company">
+                <div class="company-header">
+                    <div class="company-logo" aria-label="Astrotech">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div>
+                        <h3>Astrotech Private Limited <span style="font-weight:400;">(formally known as Astrontech Distributions)</span></h3>
+                        <div class="company-meta">
+                            Full-time · 1 yr 6 mos
+                            <span class="location"> · Islamabad · On-site</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-role">
+                    <h4>Big Data Engineer</h4>
+                    <div class="role-meta">
+                        <span>Jul 2019 - Dec 2020</span>
+                        <span class="separator">·</span>
+                        <span>1 yr 6 mos</span>
+                    </div>
+                    <p class="description">
+                        Developed big data solutions for large-scale data processing. Worked with Apache Spark,
+                        Hadoop, and Hive for distributed processing. Built and optimized data workflows for
+                        analytics and reporting.
+                    </p>
+                    <div class="experience-skills">
+                        <span class="experience-skill">Hadoop Cluster</span>
+                        <span class="experience-skill">Hadoop</span>
+                        <span class="experience-skill">Apache Spark</span>
+                        <span class="experience-skill">Hive</span>
+                    </div>
+                </div>
             </div>
-            <div class="glass-card experience-item">
-                <h3>Software Developer</h3>
-                <span class="company">Pakistan Television Corporation (PTV), Islamabad</span>
-              
-                <p class="description">
-                 I worked in the Software Development Section, contributing to the design and implementation of applications.</p>
-            </div>
+
         </div>
     </section>
     
